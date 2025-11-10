@@ -22,9 +22,10 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
-import emailjs from "emailjs-com"; // ensure installed: npm install emailjs-com
+import emailjs from "emailjs-com"; // ✅ make sure this is installed: npm install emailjs-com
 
-export function SelectDemo({ value, onChange }: { value: string; onChange: (v: string) => void }) {
+// ✅ Select dropdown component (unchanged layout)
+export function SelectDemo({ value, onChange }) {
   return (
     <div className="grid w-full gap-2">
       <Label htmlFor="service-select">Service Category</Label>
@@ -46,25 +47,22 @@ export function SelectDemo({ value, onChange }: { value: string; onChange: (v: s
   );
 }
 
+// ✅ Main contact form
 export default function Contact() {
-  const formRef = useRef<HTMLFormElement | null>(null);
-  const [service, setService] = useState<string>("");
-  const [isSending, setIsSending] = useState<boolean>(false);
+  const formRef = useRef();
+  const [service, setService] = useState("");
+  const [isSending, setIsSending] = useState(false);
 
+  // ✅ EmailJS credentials
   const SERVICE_ID = "service_ao3b1gk";
   const TEMPLATE_ID = "template_wa74tw6";
   const PUBLIC_KEY = "WBjSZrLOlh4V_sck2";
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
 
     if (!service) {
       alert("Please select a service.");
-      return;
-    }
-
-    if (!formRef.current) {
-      alert("Form unavailable. Please refresh and try again.");
       return;
     }
 
@@ -73,14 +71,14 @@ export default function Contact() {
     emailjs
       .sendForm(SERVICE_ID, TEMPLATE_ID, formRef.current, PUBLIC_KEY)
       .then(
-        (result: any) => {
+        (result) => {
           console.log("✅ Email sent:", result.text);
           alert("Message sent successfully!");
-          formRef.current?.reset();
+          formRef.current.reset();
           setService("");
         },
-        (error: any) => {
-          console.error("❌ Email sending error:", error.text || error);
+        (error) => {
+          console.error("❌ Email sending error:", error.text);
           alert("Failed to send message, please try again.");
         }
       )
@@ -98,6 +96,7 @@ export default function Contact() {
         <CardContent>
           <form ref={formRef} onSubmit={handleSubmit}>
             <div className="flex flex-col gap-6">
+
               {/* Name */}
               <div className="grid gap-2">
                 <Label htmlFor="name">Name</Label>

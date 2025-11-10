@@ -7,49 +7,54 @@ import {
   MenubarSeparator,
   MenubarShortcut,
 } from "@/components/ui/menubar";
-import { Link } from "react-router-dom";
-import { HashLink } from "react-router-hash-link";
+import { Link } from 'react-router-dom';
 import Tutoring from "../components/sections/Tutoring";
 import Datascience from "../components/sections/Datascience";
 import Mentoring from "../components/sections/Mentoring";
 
+
 export default function Services() {
   return (
     <div className="">
-      {/* === Navbar === */}
       <Menubar className="bg-gray-200 text-black p-2 rounded">
-        {/* Home */}
+
         <MenubarMenu>
-          <Link to="/">
-            <MenubarTrigger>Home</MenubarTrigger>
-          </Link>
+        <Link to="/" >
+          <MenubarTrigger >Home</MenubarTrigger>
+        </Link>
         </MenubarMenu>
 
-        {/* Tutoring */}
+        {/* Home Menu */}
         <MenubarMenu>
-          <HashLink smooth to="/services#tutoring">
-            <MenubarTrigger>Tutoring</MenubarTrigger>
-          </HashLink>
+          <MenubarTrigger>Tutoring</MenubarTrigger>
+          <MenubarContent>
+            <MenubarItem>Dashboard</MenubarItem>
+            <MenubarItem>Settings</MenubarItem>
+          </MenubarContent>
         </MenubarMenu>
 
-        {/* Data Science */}
+        {/* Portfolio Menu */}
         <MenubarMenu>
-          <HashLink smooth to="/services#datascience">
-            <MenubarTrigger>Data Science</MenubarTrigger>
-          </HashLink>
+          <MenubarTrigger>Data Science</MenubarTrigger>
+          <MenubarContent>
+            <MenubarItem>Web Apps</MenubarItem>
+            <MenubarItem>Designs</MenubarItem>
+          </MenubarContent>
         </MenubarMenu>
 
-        {/* Mentoring */}
+        {/* Services Menu */}
         <MenubarMenu>
-          <HashLink smooth to="/services#mentoring">
-            <MenubarTrigger>Mentoring</MenubarTrigger>
-          </HashLink>
+          <MenubarTrigger>Mentoring</MenubarTrigger>
+          <MenubarContent>
+            <MenubarItem>Consulting</MenubarItem>
+            <MenubarItem>Development</MenubarItem>
+          </MenubarContent>
         </MenubarMenu>
 
-        {/* About */}
+        {/* About Menu */}
         <MenubarMenu>
-          <Link to="/about">
-            <MenubarTrigger>About</MenubarTrigger>
+          <Link to ="/about">
+          <MenubarTrigger>About</MenubarTrigger>
           </Link>
           <MenubarContent>
             <MenubarItem>Bio</MenubarItem>
@@ -62,10 +67,12 @@ export default function Services() {
         </MenubarMenu>
       </Menubar>
 
-      {/* === Sections === */}
-      <Tutoring />
-      <Datascience />
-      <Mentoring />
+
+{/* sections */}
+
+    <Tutoring />
+    <Datascience />
+    <Mentoring />
     </div>
   );
 }

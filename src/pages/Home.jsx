@@ -10,6 +10,7 @@ import Hero from "../components/sections/Hero";
 import Portfolio from "../components/sections/Portfolio";
 import Services from "../components/sections/Services";
 import Contact from "../components/sections/Contact";
+
 import { Link } from "react-router-dom";
 import { HashLink } from "react-router-hash-link";
 
@@ -37,15 +38,11 @@ export default function Home() {
             <MenubarTrigger>Services</MenubarTrigger>
           </Link>
           <MenubarContent>
-            <HashLink smooth to="/services#tutoring">
-              <MenubarItem>Tutoring</MenubarItem>
-            </HashLink>
-            <HashLink smooth to="/services#datascience">
+            <MenubarItem>Tutoring</MenubarItem>
+            <HashLink to="/services#datascience">
               <MenubarItem>Data Science</MenubarItem>
             </HashLink>
-            <HashLink smooth to="/services#mentoring">
-              <MenubarItem>Mentoring</MenubarItem>
-            </HashLink>
+            <MenubarItem>Mentoring</MenubarItem>
           </MenubarContent>
         </MenubarMenu>
 
