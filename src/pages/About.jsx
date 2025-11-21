@@ -154,7 +154,6 @@ export default function About() {
             alt="Profile"
             className="w-48 h-48 rounded-full object-cover mb-6"
           />
-          {/* === STEP 2: Use onClick handler for reliable download === */}
           <Button onClick={handleResumeDownload} className="mt-auto">
             Download Resume
           </Button>
